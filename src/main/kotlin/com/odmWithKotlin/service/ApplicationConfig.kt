@@ -1,6 +1,6 @@
 package com.odmWithKotlin.service
 
-//import com.odmWithKotlin.database.controller.DataBaseController
+import com.odmWithKotlin.database.controller.DataBaseController
 import org.apache.cxf.Bus
 import org.apache.cxf.bus.spring.SpringBus
 import org.apache.cxf.ext.logging.LoggingFeature
@@ -44,6 +44,6 @@ class ApplicationConfig {
         return endpoint
     }
 
-//    @Bean
-//    fun DataBaseController?.endpointEntity() = EndpointImpl(this)
+    @Bean
+    fun DataBaseController?.endpointEntity() = EndpointImpl(this)
 }
