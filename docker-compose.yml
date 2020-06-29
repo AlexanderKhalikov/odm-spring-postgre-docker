@@ -2,24 +2,22 @@ version: '3'
 services:
   app:
     build: .
-    image: app-springboot-postgresql:v26
+    image: app-springboot-postgresql:v1
     container_name: odm-springboot-postgre
     ports:
       - 8080:8080
-#    depends_on:
-#      - dbpostgresql
+    depends_on:
+      - db
 #      - odm
-#    links:
-#      - "odm:odm"
-#  dbpostgresql:
-#    container_name: postgresDB
-#    image: postgresnetwork
-#    ports:
-#      - 5432:5432
-#    environment:
-#      - POSTGRES_PASSWORD=password
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_DB=mydb
+  db:
+    container_name: postgresDB
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
 #  odm:
 #    image: ibmcom/odm
 #    container_name: odmResOnDocker
