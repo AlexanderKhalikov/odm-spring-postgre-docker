@@ -2,16 +2,23 @@ package com.odmWithKotlin.service
 
 import ServiceDeployNew.*
 import lombok.SneakyThrows
+import org.modelmapper.ModelMapper
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
+import java.io.StringWriter
+import javax.xml.bind.JAXBContext
+import javax.xml.bind.JAXBException
 
 @Service
-class ServiceDeployImpl : ServiceOppDecisionService {
+class ServiceDeployImpl : ServiceDeployOld.ServiceOppDecisionService {
 
     @Autowired
     private lateinit var serviceOppDecisionServiceNew: ServiceOppDecisionService
+
+    @Autowired
+    private lateinit var modelMapper: ModelMapper
 
     @Value("\${webservice.client.urlServiceDeployNew}")
     private lateinit var clientUrlServiceDeployNew: String
@@ -20,22 +27,38 @@ class ServiceDeployImpl : ServiceOppDecisionService {
 
     @SneakyThrows
     override fun serviceOpp(
-            serviceOppRequest: ServiceOppRequest
-    ): ServiceOppResponse {
+            serviceOppRequest: ServiceDeployOld.ServiceOppRequest
+    ): ServiceDeployOld.ServiceOppResponse {
 
-        logger.info("Calling SOAP service with URL: '$clientUrlServiceDeployNew'")
-        val response = ServiceOppResponse().apply {
-            response = Response().apply {
-                response = Response2()
-            }
+        /** mapping old to new */
+        val serviceOppRequestNew = modelMapper.map(
+                serviceOppRequest, ServiceDeployNew.ServiceOppRequest::class.java, ""
+        )
+        logger.debug("Mapping successful")
+        serviceOppRequestNew.request.request.isAddtitionalValue = true
+
+        try {
+            val jaxbContext = JAXBContext.newInstance(ServiceDeployNew.ServiceOppRequest::class.java)
+            val jaxbMarshaller = jaxbContext.createMarshaller()
+            val sw = StringWriter()
+            jaxbMarshaller.marshal(serviceOppRequestNew, sw)
+            logger.debug("Got filled request for ServiceDeployNew")
+            logger.debug("Request to ServiceDeployNew:")
+            logger.debug(sw.toString())
+        } catch (e: JAXBException) {
+            logger.debug(e.printStackTrace().toString())
         }
 
-        logger.info("Successfully called SOAP serviceOppDecisionServiceNew service!")
+        /** Calling ODM */
+        logger.info("Calling ODM with URL: '$clientUrlServiceDeployNew'")
+        val serviceOppResponseNew = serviceOppDecisionServiceNew
+                .serviceOpp(
+                        serviceOppRequestNew
+                )
 
-        response.response.response.isAnswer = true
-
-        println("Всё ок")
-        println(response)
-        return response
+        logger.info("SOAP service ODM ServiceOppRequestNew responded successfully!")
+        return modelMapper.map(
+                serviceOppResponseNew, ServiceDeployOld.ServiceOppResponse::class.java
+        )
     }
 }

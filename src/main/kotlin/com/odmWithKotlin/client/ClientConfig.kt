@@ -46,15 +46,15 @@ class ClientConfig {
     @Bean
     fun restTemplate() = RestTemplate()
 
-//    @Bean
-//    fun modelMapper() = ModelMapper().apply {
-//        configuration.matchingStrategy = MatchingStrategies.STANDARD
-//        configuration.fieldAccessLevel = org.modelmapper.config.Configuration.AccessLevel.PRIVATE
-//        configuration.methodAccessLevel = org.modelmapper.config.Configuration.AccessLevel.PRIVATE
-//        configuration.isFieldMatchingEnabled = true
-//        configuration.isAmbiguityIgnored = true
-//        typeMap(ServiceDeployOld.ServiceOppRequest::class.java, ServiceDeployNew.ServiceOppRequest::class.java)
-//    }
+    @Bean
+    fun modelMapper() = ModelMapper().apply {
+        configuration.matchingStrategy = MatchingStrategies.STANDARD
+        configuration.fieldAccessLevel = org.modelmapper.config.Configuration.AccessLevel.PRIVATE
+        configuration.methodAccessLevel = org.modelmapper.config.Configuration.AccessLevel.PRIVATE
+        configuration.isFieldMatchingEnabled = true
+        configuration.isAmbiguityIgnored = true
+        typeMap(ServiceDeployOld.ServiceOppRequest::class.java, ServiceDeployNew.ServiceOppRequest::class.java)
+    }
 
     companion object {
         @Bean

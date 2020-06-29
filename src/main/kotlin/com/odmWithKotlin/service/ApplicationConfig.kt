@@ -40,7 +40,7 @@ class ApplicationConfig {
     @Bean
     fun endpointServiceOppDecisionServiceNew(bus: Bus?, accountServiceEndpoint: ServiceDeployImpl?): Endpoint {
         val endpoint = EndpointImpl(bus, accountServiceEndpoint)
-        endpoint.publish("/ws/serviceDeployNew/serviceOpp/v75")
+        endpoint.publish("/ws/serviceDeployOld/serviceOpp/v75")
         return endpoint
     }
 
