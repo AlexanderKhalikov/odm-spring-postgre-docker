@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns="http://www.ibm.com/rules/decisionservice/tracefilter" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.ibm.com/rules/decisionservice/tracefilter">
+
+	<xsd:element name="decisionTraceFilter" nillable="true" type="TraceFilter"/>
+
+	<xsd:complexType name="TraceFilter">
+
+		<xsd:sequence>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="all" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records everything if set to true.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="none" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records nothing but the other following filters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="executionDuration" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the duration of the execution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="executionDate" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the date of the execution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="rulesetProperties" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records static data about the ruleset.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="systemProperties" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records static data about the execution server.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="inetAddress" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records static data about the internet address of the server.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="totalRulesFired" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the number of rules executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="totalRulesNotFired" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the number of rules that have not been executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="rules" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the complete list of rules in the executed ruleset.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="rulesFired" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records any rule that has been executed at least once.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="rulesNotFired" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the rules that have not been executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="totalTasksExecuted" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the number of tasks executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="totalTasksNotExecuted" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the number of tasks that have not been executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="tasks" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the complete list of tasks in the executed ruleset.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="tasksExecuted" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records any task that has been executed at least once.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="tasksNotExecuted" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the tasks that have not been executed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="outputString" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the stream output of the engine execution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="inputParameters" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records ruleset input parameters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="outputParameters" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records ruleset output parameters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="workingMemory" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the state of the working memory.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+
+			<xsd:element maxOccurs="1" minOccurs="0" name="workingMemoryFilter" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Holds the working memory filter.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="executionEvents" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the events that have been executed. This filter is a shortcut to select tasksExecuted and rulesFired filters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			
+			<xsd:element maxOccurs="1" minOccurs="0" name="boundObjects" type="xsd:boolean">
+				<xsd:annotation>
+					<xsd:documentation>Records the list of matched objects.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>			
+						
+			<xsd:element default="ClassName" maxOccurs="1" minOccurs="0" name="boundObjectsSerializationType">
+				<xsd:annotation>
+					<xsd:documentation>Choose the type of serialization for bound objects.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+				  <xsd:restriction base="xsd:string">
+				    <xsd:enumeration value="JAXB"/>
+				    <xsd:enumeration value="ToString"/>
+				    <xsd:enumeration value="ClassName"/>
+				  </xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>			
+						
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xom1="http://www.ibm.com/rules/decisionservice/ServiceDeployNew/ServiceOpp" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ibm.com/rules/decisionservice/ServiceDeployNew/ServiceOpp/param">
+  <xsd:import namespace="http://www.ibm.com/rules/decisionservice/ServiceDeployNew/ServiceOpp" schemaLocation="ServiceDeployNewServiceOppSchema1.xsd"/>
+  <xsd:element name="request">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="xom1:request"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="response">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="xom1:response"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
