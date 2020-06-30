@@ -15,14 +15,12 @@ webservice.client:
   urlServiceDeployNew: https://odmeudemo1.bpm.ibmcloud.com/odm/dev/DecisionService/ws/serviceDeployNew/serviceOpp/v75
 #  urlServiceDeployNew: odm:9060/DecisionService/ws/serviceDeployNew/serviceOpp/v75
 
-# cxf-spring-boot-starter confclientUrlServiceDeployNewiguration in client-only mode
 soap.messages:
   logging: true
   extract: true
 endpoint.autoinit: false
 
 # Url for getting SOAP Request
-#ServiceDeployNewGetRequestURL: odm:9060/DecisionService/rest/v1/serviceDeployNew/serviceOpp/xml
 ServiceDeployNewGetRequestURL: https://odmeudemo1.bpm.ibmcloud.com/odm/dev/DecisionService/rest/v1/serviceDeployNew/serviceOpp/xml
 
 cloudUrl: "https://odmeudemo1.bpm.ibmcloud.com/odm/dev/res"
