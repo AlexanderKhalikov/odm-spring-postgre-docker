@@ -10,8 +10,8 @@ spring:
 
 # SOAP client configuration (which SOAP server we want to access)
 webservice.client:
-  cloudUsername: "aleksandrkhalikov.fid@t1002"
-  cloudPassword: "mQcgT2pGGtkALk43lmhf5p6LnSIbUrCLD4Q4Zk7Q"
+  cloudUsername: ""
+  cloudPassword: ""
   urlServiceDeployNew: https://odmeudemo1.bpm.ibmcloud.com/odm/dev/DecisionService/ws/serviceDeployNew/serviceOpp/v75
 #  urlServiceDeployNew: odm:9060/DecisionService/ws/serviceDeployNew/serviceOpp/v75
 
