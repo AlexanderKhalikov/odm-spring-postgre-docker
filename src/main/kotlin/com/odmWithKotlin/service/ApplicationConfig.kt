@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Primary
 import java.util.ArrayList
 import javax.xml.ws.Endpoint
 
-
 @Configuration
 class ApplicationConfig {
     @Bean

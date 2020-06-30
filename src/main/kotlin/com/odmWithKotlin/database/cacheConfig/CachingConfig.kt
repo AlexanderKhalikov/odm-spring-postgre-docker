@@ -15,13 +15,13 @@ import javax.management.timer.Timer
 @EnableScheduling
 class CachingConfig {
     @Bean
-    open fun cacheManager() = SimpleCacheManager().apply {
+    fun cacheManager() = SimpleCacheManager().apply {
         setCaches(listOf(ConcurrentMapCache("bad_value")))
     }
 
     //    Каждый час очищаем кэш базы данных
     @Scheduled(fixedRate = Timer.ONE_HOUR)
     @CacheEvict(value = ["bad_value"], allEntries = true)
-    open fun clearCache() {
+    fun clearCache() {
     }
 }

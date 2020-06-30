@@ -1,6 +1,7 @@
 package com.odmWithKotlin.service
 
 import ServiceDeployNew.*
+import com.odmWithKotlin.database.repository.BadValuesRepository
 import lombok.SneakyThrows
 import org.modelmapper.ModelMapper
 import org.slf4j.LoggerFactory
@@ -22,6 +23,9 @@ class ServiceDeployImpl : ServiceDeployOld.ServiceOppDecisionService {
 
     @Value("\${webservice.client.urlServiceDeployNew}")
     private lateinit var clientUrlServiceDeployNew: String
+
+    @Autowired
+    private lateinit var badValuesRepository: BadValuesRepository
 
     private val logger = LoggerFactory.getLogger(ServiceOppDecisionService::class.java)
 
@@ -55,6 +59,14 @@ class ServiceDeployImpl : ServiceDeployOld.ServiceOppDecisionService {
                 .serviceOpp(
                         serviceOppRequestNew
                 )
+
+        logger.info("Call to Postgres DB")
+        serviceOppResponseNew
+                .response
+                .response
+                .isAnswer = badValuesRepository.allBadValues.contains(
+                serviceOppRequestNew.request.request.name
+        )
 
         logger.info("SOAP service ODM ServiceOppRequestNew responded successfully!")
         return modelMapper.map(
