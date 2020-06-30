@@ -7,6 +7,8 @@ When using containers run this:
 
 ```mvn package && docker-compose up -d --build```
 
+Don't forget to fill your own credentials in application.yml
+
 # Instructions:
 
 ## First checkout to branch oneService
