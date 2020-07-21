@@ -45,7 +45,7 @@ Run ```2 consume two services``` from postman collection. Now it is a bit more s
 
 Now to run your service with Postges you need this command:
 
-```mvn clean package && docker-compose up -d --build```
+```mvn clean package && docker-compose up -d --build``` or ```open //Applications/Docker.app && mvn clean package && docker-compose up -d --build```
 
 It will deploy 2 containers: app and db. Now we are working same as in previous step, our response depends on "name" from Request and if it is in our DB.
 
