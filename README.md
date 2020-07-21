@@ -9,11 +9,25 @@ When using containers run this:
 
 Don't forget to fill your own credentials in application.yml
 
+# Intro
+
+## What is ODM:
+
+IBM Operational Decision Maneger is a technology which allow different business client such as banks, insurance companies and many more to automate their decision making proceses based on rules written in natural language for a particular business user.
+
 # Instructions:
 
 ## First checkout to branch oneService
 
 ```git checkout oneService```
+
+IBM ODM service may be requested by client:
+
+![Screenshot 2020-07-21 at 17 38 23](https://user-images.githubusercontent.com/17321542/88068668-2de9cd80-cb79-11ea-9b5d-0d10ec34cfae.png)
+
+But in this project a Spring Boot application is injected between client and ODM service:
+
+![Screenshot 2020-07-21 at 17 38 36](https://user-images.githubusercontent.com/17321542/88068691-34784500-cb79-11ea-90de-3e887c07d2da.png)
 
 Run this:
 
@@ -29,6 +43,10 @@ Run ```1 consume one service``` from postman collection. You just requested an O
 
 ```git checkout twoServices```
 
+Now let's try to imagine that business user need to commit some integrational changes to ODM, but it is very expensive in terms of time or some other resources to make these changes on requesting system. In this example it is called "additional paremeter". To solve this problem second ODM service is added. Now the architecture looks like this:
+
+![Screenshot 2020-07-21 at 17 38 54](https://user-images.githubusercontent.com/17321542/88068701-393cf900-cb79-11ea-8e55-8652b3251a2c.png)
+
 Run this:
 
 ```mvn clean package && mvn spring-boot:run```
@@ -42,6 +60,10 @@ Run ```2 consume two services``` from postman collection. Now it is a bit more s
 ## At last checkout to branch addPostgres
 
 ```git checkout addPostgres```
+
+It may be very useful to enriche every request with some information from a Database
+
+![Screenshot 2020-07-21 at 17 39 16](https://user-images.githubusercontent.com/17321542/88068718-3e9a4380-cb79-11ea-928a-9cc96c407fe9.png)
 
 Now to run your service with Postges you need this command:
 
