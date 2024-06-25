@@ -19,7 +19,7 @@ class CachingConfig {
         setCaches(listOf(ConcurrentMapCache("bad_value")))
     }
 
-    //    Каждый час очищаем кэш базы данных
+    //    Clear Cache every hour
     @Scheduled(fixedRate = Timer.ONE_HOUR)
     @CacheEvict(value = ["bad_value"], allEntries = true)
     fun clearCache() {
